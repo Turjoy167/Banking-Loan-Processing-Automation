@@ -1,0 +1,271 @@
+========================================================================
+   BANKING AI LOAN RISK ASSESSMENT — REAL DATASET PIPELINE
+========================================================================
+
+  Dataset : Analytics Vidhya Loan Prediction Dataset (2014). 614 real loan applications with 12 features. Source: https://github.com/shrikant-temburwar/Loan-Prediction-Dataset
+  Source  : https://github.com/shrikant-temburwar/Loan-Prediction-Dataset
+
+[Step 1/6]  Loading and preprocessing real loan dataset...
+[Dataset] Loaded '/home/user/workspace/ai_solution/loan_data.csv'
+          Shape: (614, 13)  |  Columns: ['Loan_ID', 'Gender', 'Married', 'Dependents', 'Education', 'Self_Employed', 'ApplicantIncome', 'CoapplicantIncome', 'LoanAmount', 'Loan_Amount_Term', 'Credit_History', 'Property_Area', 'Loan_Status']
+[Dataset] After preprocessing: (614, 12)
+[Dataset] Approval rate: 68.7%  (422 approved / 192 denied)
+[Dataset] Missing values remaining: 0
+
+  Dataset overview:
+  Total applications            : 614
+  Approved (Y)                  : 422  (68.7%)
+  Denied (N)                    : 192  (31.3%)
+  Features (raw + engineered)   : 18
+
+  Column summary:
+  Column                    Type       Non-Null    Unique
+  -------------------------------------------------------
+  gender                    int64           614         2
+  married                   int64           614         2
+  dependents                int64           614         4
+  education                 int64           614         2
+  self_employed             int64           614         2
+  applicant_income          int64           614       505
+  coapplicant_income        float64         614       287
+  loan_amount               float64         614       203
+  loan_amount_term          float64         614        10
+  credit_history            float64         614         2
+  property_area             int64           614         3
+  approved                  int64           614         2
+
+[Step 2/6]  Training Random Forest with GridSearchCV + 5-fold CV...
+[Split] Train: 491  |  Test: 123
+[Split] Train approval rate: 68.6%  | Test approval rate: 69.1%
+[GridSearchCV] Searching hyperparameter space (5-fold CV)...
+[GridSearchCV] Best params : {'max_depth': 6, 'max_features': 'sqrt', 'min_samples_leaf': 3, 'n_estimators': 300}
+[GridSearchCV] Best CV AUC : 0.7775
+[CV] 5-Fold Accuracy: 0.7596 ± 0.0545  | Scores: [np.float64(0.798), np.float64(0.6837), np.float64(0.7959), np.float64(0.7041), np.float64(0.8163)]
+
+  Cross-validation results (5-fold accuracy on training set):
+    Fold 1: 0.7980
+    Fold 2: 0.6837
+    Fold 3: 0.7959
+    Fold 4: 0.7041
+    Fold 5: 0.8163
+  Mean : 0.7596  |  Std : 0.0545
+
+[Step 3/6]  Evaluating model on held-out test set (123 samples)...
+
+[Metrics]
+  Accuracy    : 0.8374
+  Precision   : 0.8824
+  Recall      : 0.8824
+  F1          : 0.8824
+  Roc_auc     : 0.8588
+
+  Metric                    Value
+  --------------------------------
+  Accuracy                 0.8374
+  Precision                0.8824
+  Recall                   0.8824
+  F1                       0.8824
+  ROC_AUC                  0.8588
+
+  Full Classification Report:
+  ------------------------------------------------------------------------
+                precision    recall  f1-score   support
+  
+    Denied (0)       0.74      0.74      0.74        38
+  Approved (1)       0.88      0.88      0.88        85
+  
+      accuracy                           0.84       123
+     macro avg       0.81      0.81      0.81       123
+  weighted avg       0.84      0.84      0.84       123
+  
+
+[Step 4/6]  Computing feature importances (Gini + permutation)...
+
+  Feature                    Gini Imp.   Perm Imp.   Perm Std
+  ----------------------------------------------------------
+  credit_history                0.3191      0.3020     0.0415
+  emi_to_income_ratio           0.0711      0.0188     0.0088
+  applicant_income              0.0699      0.0037     0.0073
+  loan_to_income                0.0684      0.0319     0.0079
+  income_per_person             0.0670      0.0109     0.0100
+  log_total_income              0.0654     -0.0012     0.0057
+  total_income                  0.0611      0.0018     0.0052
+  emi_estimate                  0.0601     -0.0068     0.0077
+  log_loan_amount               0.0548     -0.0015     0.0052
+  loan_amount                   0.0508     -0.0011     0.0035
+  coapplicant_income            0.0445      0.0036     0.0058
+  property_area                 0.0200      0.0023     0.0037
+  dependents                    0.0120     -0.0020     0.0026
+  loan_amount_term              0.0099      0.0000     0.0016
+  married                       0.0097      0.0005     0.0015
+  education                     0.0071     -0.0006     0.0010
+  self_employed                 0.0051      0.0007     0.0011
+  gender                        0.0041      0.0001     0.0006
+
+[Step 5/6]  Generating visualisation charts...
+  [Chart saved] /home/user/workspace/ai_solution/feature_importance.png
+  [Chart saved] /home/user/workspace/ai_solution/roc_curve.png
+  [Chart saved] /home/user/workspace/ai_solution/confusion_matrix.png
+  [Chart saved] /home/user/workspace/ai_solution/risk_distribution.png
+
+[Step 6/6]  Predicting sample applications...
+
+========================================================================
+  SAMPLE APPLICATION PREDICTIONS
+========================================================================
+
+  Application ID   : APP-20240001
+  Applicant        : Sarah Johnson
+  Gender           : Female
+  Married          : Married
+  Education        : Graduate
+  Self-Employed    : Salaried
+  Applicant Income : 6,800/mo
+  Co-App Income    : 2,100/mo
+  Loan Amount      : 150k
+  Loan Term        : 360 months
+  Credit History   : Yes (1)
+  Property Area    : Urban
+  Dependents       : 0
+  Notes            : Graduate, married, strong credit history, urban property, dual income.
+
+  >>> AI DECISION        : APPROVED
+  >>> Approval Prob      : 0.5759
+  >>> Risk Level         : HIGH RISK
+  >>> Top Feature Contributions:
+       • 'credit_history' = 1.00  (28.9% weight, influenced decision positively)
+       • 'loan_to_income' = 0.02  (13.0% weight, influenced decision negatively)
+       • 'income_per_person' = 8900.00  (13.0% weight, influenced decision positively)
+       • 'log_total_income' = 9.09  (11.4% weight, influenced decision positively)
+       • 'emi_to_income_ratio' = 0.00  (5.8% weight, influenced decision negatively)
+
+  >>> DOC VERIFICATION   : VERIFIED  (confidence 100.00%)
+  ------------------------------------------------------------------------
+
+  Application ID   : APP-20240002
+  Applicant        : Marcus Williams
+  Gender           : Male
+  Married          : Single
+  Education        : Not Graduate
+  Self-Employed    : Salaried
+  Applicant Income : 2,800/mo
+  Co-App Income    : 0/mo
+  Loan Amount      : 120k
+  Loan Term        : 360 months
+  Credit History   : No (0)
+  Property Area    : Rural
+  Dependents       : 2
+  Notes            : Not graduate, single, 2 dependents, no credit history, rural area.
+
+  >>> AI DECISION        : DENIED
+  >>> Approval Prob      : 0.2141
+  >>> Risk Level         : VERY HIGH RISK
+  >>> Top Feature Contributions:
+       • 'credit_history' = 0.00  (59.1% weight, influenced decision negatively)
+       • 'loan_to_income' = 0.04  (12.0% weight, influenced decision positively)
+       • 'log_total_income' = 7.94  (6.6% weight, influenced decision negatively)
+       • 'income_per_person' = 933.33  (4.4% weight, influenced decision negatively)
+       • 'total_income' = 2800.00  (2.9% weight, influenced decision negatively)
+
+  >>> DOC VERIFICATION   : VERIFIED  (confidence 100.00%)
+  ------------------------------------------------------------------------
+
+  Application ID   : APP-20240003
+  Applicant        : Elena Rodriguez
+  Gender           : Female
+  Married          : Married
+  Education        : Graduate
+  Self-Employed    : Salaried
+  Applicant Income : 9,500/mo
+  Co-App Income    : 3,200/mo
+  Loan Amount      : 200k
+  Loan Term        : 360 months
+  Credit History   : Yes (1)
+  Property Area    : Semiurban
+  Dependents       : 1
+  Notes            : Excellent income, graduate, positive credit history, semiurban property.
+
+  >>> AI DECISION        : APPROVED
+  >>> Approval Prob      : 0.5886
+  >>> Risk Level         : HIGH RISK
+  >>> Top Feature Contributions:
+       • 'credit_history' = 1.00  (22.3% weight, influenced decision positively)
+       • 'log_total_income' = 9.45  (16.3% weight, influenced decision positively)
+       • 'loan_to_income' = 0.02  (11.6% weight, influenced decision negatively)
+       • 'total_income' = 12700.00  (9.0% weight, influenced decision positively)
+       • 'log_loan_amount' = 5.30  (8.4% weight, influenced decision positively)
+
+  >>> DOC VERIFICATION   : VERIFIED  (confidence 100.00%)
+  ------------------------------------------------------------------------
+
+  Application ID   : APP-20240004
+  Applicant        : Derek Thompson
+  Gender           : Male
+  Married          : Married
+  Education        : Graduate
+  Self-Employed    : Self-Employed
+  Applicant Income : 4,200/mo
+  Co-App Income    : 1,500/mo
+  Loan Amount      : 180k
+  Loan Term        : 360 months
+  Credit History   : No (0)
+  Property Area    : Semiurban
+  Dependents       : 3
+  Notes            : Self-employed, 3 dependents, no credit history, borderline profile.
+
+  >>> AI DECISION        : DENIED
+  >>> Approval Prob      : 0.3213
+  >>> Risk Level         : VERY HIGH RISK
+  >>> Top Feature Contributions:
+       • 'credit_history' = 0.00  (74.5% weight, influenced decision negatively)
+       • 'loan_to_income' = 0.03  (6.3% weight, influenced decision positively)
+       • 'income_per_person' = 1425.00  (4.9% weight, influenced decision negatively)
+       • 'log_loan_amount' = 5.20  (3.4% weight, influenced decision positively)
+       • 'dependents' = 3.00  (2.5% weight, influenced decision positively)
+
+  >>> DOC VERIFICATION   : VERIFIED  (confidence 100.00%)
+  ------------------------------------------------------------------------
+
+  Application ID   : APP-20240005
+  Applicant        : Priya Patel
+  Gender           : Female
+  Married          : Married
+  Education        : Graduate
+  Self-Employed    : Salaried
+  Applicant Income : 5,500/mo
+  Co-App Income    : 2,800/mo
+  Loan Amount      : 130k
+  Loan Term        : 360 months
+  Credit History   : Yes (1)
+  Property Area    : Urban
+  Dependents       : 0
+  Notes            : Graduate, married, solid credit, urban area, good combined income.
+
+  >>> AI DECISION        : APPROVED
+  >>> Approval Prob      : 0.5910
+  >>> Risk Level         : HIGH RISK
+  >>> Top Feature Contributions:
+       • 'credit_history' = 1.00  (29.9% weight, influenced decision positively)
+       • 'loan_to_income' = 0.02  (15.8% weight, influenced decision negatively)
+       • 'income_per_person' = 8300.00  (11.3% weight, influenced decision positively)
+       • 'log_total_income' = 9.02  (9.8% weight, influenced decision positively)
+       • 'emi_to_income_ratio' = 0.00  (6.7% weight, influenced decision negatively)
+
+  >>> DOC VERIFICATION   : VERIFIED  (confidence 100.00%)
+  ------------------------------------------------------------------------
+
+========================================================================
+  PIPELINE COMPLETE — SUMMARY
+========================================================================
+  Dataset          : Analytics Vidhya Loan Prediction (n=614)
+  Source URL       : https://github.com/shrikant-temburwar/Loan-Prediction-Dataset
+  Model            : Random Forest (GridSearchCV tuned)
+  CV Accuracy      : 0.7596 ± 0.0545
+  Test Accuracy    : 0.8374
+  ROC-AUC Score    : 0.8588
+  F1 Score         : 0.8824
+  Precision        : 0.8824
+  Recall           : 0.8824
+  Charts saved to  : /home/user/workspace/ai_solution/
+  Applications     : 5 scored
+========================================================================

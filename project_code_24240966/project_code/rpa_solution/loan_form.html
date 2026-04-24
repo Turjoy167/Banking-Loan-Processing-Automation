@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>First National Bank — Online Loan Application</title>
+  <style>
+    /* ── Reset & Base ─────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: #f0f4f8;
+      color: #1a2b3c;
+      min-height: 100vh;
+    }
+
+    /* ── Header ──────────────────────────────────────────────────── */
+    header {
+      background: linear-gradient(135deg, #0a1f44 0%, #1a3a6e 100%);
+      color: #fff;
+      padding: 0 32px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 12px rgba(0,0,0,.35);
+    }
+    .header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+    }
+    .bank-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .bank-logo svg { flex-shrink: 0; }
+    .bank-name { font-size: 1.15rem; font-weight: 700; letter-spacing: .4px; }
+    .bank-tagline { font-size: .72rem; color: #a8c0e0; letter-spacing: .6px; text-transform: uppercase; }
+    .header-nav { font-size: .82rem; color: #a8c0e0; }
+
+    /* ── Hero banner ─────────────────────────────────────────────── */
+    .hero {
+      background: linear-gradient(160deg, #132c5a 0%, #1d4080 60%, #245499 100%);
+      color: #fff;
+      text-align: center;
+      padding: 48px 24px 40px;
+    }
+    .hero h1 { font-size: 2rem; font-weight: 700; margin-bottom: 8px; }
+    .hero p { font-size: 1rem; color: #b8d0f0; max-width: 560px; margin: 0 auto; }
+
+    /* ── Progress bar ────────────────────────────────────────────── */
+    .progress-bar-wrap {
+      background: #0a1f44;
+      padding: 0 32px;
+    }
+    .progress-steps {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      gap: 0;
+    }
+    .step {
+      flex: 1;
+      text-align: center;
+      padding: 10px 4px;
+      font-size: .72rem;
+      color: #4a6fa8;
+      font-weight: 600;
+      letter-spacing: .4px;
+      text-transform: uppercase;
+      position: relative;
+      border-bottom: 3px solid transparent;
+    }
+    .step.active {
+      color: #4fc3f7;
+      border-bottom-color: #4fc3f7;
+    }
+    .step.done { color: #66bb6a; border-bottom-color: #66bb6a; }
+
+    /* ── Main layout ─────────────────────────────────────────────── */
+    .container {
+      max-width: 900px;
+      margin: 36px auto 60px;
+      padding: 0 20px;
+    }
+
+    /* ── Card ────────────────────────────────────────────────────── */
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 24px rgba(0,0,0,.10);
+      overflow: hidden;
+    }
+    .card-header {
+      background: #f7f9fc;
+      border-bottom: 2px solid #e2e8f0;
+      padding: 20px 32px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .card-header-icon {
+      width: 40px; height: 40px;
+      background: linear-gradient(135deg, #1a3a6e, #2563eb);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .card-header h2 { font-size: 1.1rem; font-weight: 700; color: #0a1f44; }
+    .card-header p { font-size: .8rem; color: #64748b; margin-top: 2px; }
+    .card-body { padding: 32px; }
+
+    /* ── Section titles ──────────────────────────────────────────── */
+    .section-title {
+      font-size: .75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .9px;
+      color: #2563eb;
+      margin: 28px 0 16px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .section-title:first-child { margin-top: 0; }
+
+    /* ── Form grid ───────────────────────────────────────────────── */
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px 28px;
+    }
+    .form-grid .full { grid-column: 1 / -1; }
+
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    label {
+      font-size: .82rem;
+      font-weight: 600;
+      color: #374151;
+    }
+    label .required { color: #e53e3e; margin-left: 2px; }
+    .hint { font-size: .72rem; color: #9ca3af; }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="number"],
+    select {
+      height: 42px;
+      padding: 0 14px;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: .9rem;
+      color: #1a2b3c;
+      background: #fff;
+      transition: border-color .2s, box-shadow .2s;
+      width: 100%;
+      outline: none;
+      appearance: none;
+    }
+    select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2364748b' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 36px;
+    }
+    input:focus, select:focus {
+      border-color: #2563eb;
+      box-shadow: 0 0 0 3px rgba(37,99,235,.12);
+    }
+    input::placeholder { color: #b0bac4; }
+
+    /* ── Disclaimer ──────────────────────────────────────────────── */
+    .disclaimer {
+      background: #f0f7ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 8px;
+      padding: 14px 18px;
+      font-size: .78rem;
+      color: #3b5a8f;
+      line-height: 1.6;
+      margin-top: 8px;
+    }
+
+    /* ── Submit button ───────────────────────────────────────────── */
+    .btn-submit {
+      display: block;
+      width: 100%;
+      height: 50px;
+      margin-top: 28px;
+      background: linear-gradient(135deg, #1a3a6e, #2563eb);
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: .4px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: opacity .2s, transform .1s;
+    }
+    .btn-submit:hover { opacity: .92; }
+    .btn-submit:active { transform: scale(.99); }
+
+    /* ── Confirmation panel ──────────────────────────────────────── */
+    #confirmation {
+      display: none;
+    }
+    .confirm-header {
+      text-align: center;
+      padding: 36px 32px 24px;
+      border-bottom: 2px solid #e2e8f0;
+    }
+    .confirm-check {
+      width: 72px; height: 72px;
+      background: linear-gradient(135deg, #16a34a, #22c55e);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 16px;
+    }
+    .confirm-header h2 { font-size: 1.5rem; font-weight: 700; color: #0a1f44; }
+    .confirm-header p { color: #64748b; margin-top: 6px; font-size: .9rem; }
+    .ref-number {
+      display: inline-block;
+      margin-top: 12px;
+      background: #f0f7ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 6px;
+      padding: 6px 18px;
+      font-size: .85rem;
+      color: #1e40af;
+      font-weight: 700;
+      letter-spacing: .6px;
+    }
+
+    .confirm-body { padding: 28px 32px; }
+    .confirm-body h3 {
+      font-size: .75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .8px;
+      color: #2563eb;
+      margin-bottom: 16px;
+    }
+
+    .data-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px 28px;
+    }
+    .data-row { display: flex; flex-direction: column; gap: 3px; }
+    .data-label { font-size: .72rem; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #9ca3af; }
+    .data-value { font-size: .9rem; font-weight: 600; color: #1a2b3c; }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-size: .82rem;
+      font-weight: 700;
+    }
+    .status-badge.pending {
+      background: #fef3c7; color: #92400e;
+    }
+    .status-badge-wrap { margin-top: 24px; }
+
+    .confirm-footer {
+      background: #f7f9fc;
+      border-top: 1px solid #e2e8f0;
+      padding: 16px 32px;
+      text-align: center;
+      font-size: .78rem;
+      color: #94a3b8;
+    }
+
+    /* ── Footer ──────────────────────────────────────────────────── */
+    footer {
+      background: #0a1f44;
+      color: #4a6fa8;
+      text-align: center;
+      padding: 20px;
+      font-size: .75rem;
+    }
+
+    @media (max-width: 640px) {
+      .form-grid { grid-template-columns: 1fr; }
+      .data-grid { grid-template-columns: 1fr; }
+      .card-body { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Header ────────────────────────────────────────────────────── -->
+<header>
+  <div class="header-inner">
+    <div class="bank-logo">
+      <!-- Inline SVG logo -->
+      <svg aria-label="First National Bank" width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="42" height="42" rx="8" fill="#2563eb"/>
+        <rect x="8" y="19" width="26" height="3" rx="1.5" fill="white"/>
+        <rect x="8" y="26" width="26" height="3" rx="1.5" fill="white" opacity=".6"/>
+        <polygon points="21,6 36,16 6,16" fill="white"/>
+        <rect x="10" y="29" width="22" height="7" rx="1" fill="white" opacity=".25"/>
+        <rect x="10" y="29" width="22" height="7" rx="1" fill="none" stroke="white" stroke-width="1"/>
+      </svg>
+      <div>
+        <div class="bank-name">First National Bank</div>
+        <div class="bank-tagline">Trusted Since 1892</div>
+      </div>
+    </div>
+    <div class="header-nav">Secure Portal &nbsp;|&nbsp; Help &nbsp;|&nbsp; Contact Us</div>
+  </div>
+</header>
+
+<!-- ── Progress bar ───────────────────────────────────────────────── -->
+<div class="progress-bar-wrap">
+  <div class="progress-steps">
+    <div class="step active">1. Application</div>
+    <div class="step">2. Document Upload</div>
+    <div class="step">3. Review</div>
+    <div class="step">4. Decision</div>
+  </div>
+</div>
+
+<!-- ── Hero ──────────────────────────────────────────────────────── -->
+<div class="hero">
+  <h1>Online Loan Application</h1>
+  <p>Complete the form below to begin your application. Fields marked <span style="color:#f87171">*</span> are required. Most decisions are returned within 2–3 business days.</p>
+</div>
+
+<!-- ── Main form ─────────────────────────────────────────────────── -->
+<main class="container">
+
+  <!-- Application form card -->
+  <div class="card" id="app-form-card">
+    <div class="card-header">
+      <div class="card-header-icon">
+        <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+        </svg>
+      </div>
+      <div>
+        <h2>Personal &amp; Loan Information</h2>
+        <p>All information is encrypted and transmitted securely (TLS 1.3)</p>
+      </div>
+    </div>
+    <div class="card-body">
+      <form id="loanForm" novalidate>
+
+        <!-- Personal Information -->
+        <div class="section-title">Personal Information</div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="fullName">Full Name <span class="required">*</span></label>
+            <input type="text" id="fullName" name="fullName" placeholder="e.g. Jane Smith" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address <span class="required">*</span></label>
+            <input type="email" id="email" name="email" placeholder="e.g. jane@example.com" required />
+          </div>
+        </div>
+
+        <!-- Financial Information -->
+        <div class="section-title">Financial Information</div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="annualIncome">Annual Income ($) <span class="required">*</span></label>
+            <input type="number" id="annualIncome" name="annualIncome" placeholder="e.g. 75000" min="0" required />
+          </div>
+          <div class="form-group">
+            <label for="loanAmount">Requested Loan Amount ($) <span class="required">*</span></label>
+            <input type="number" id="loanAmount" name="loanAmount" placeholder="e.g. 25000" min="1000" required />
+          </div>
+          <div class="form-group">
+            <label for="loanPurpose">Loan Purpose <span class="required">*</span></label>
+            <select id="loanPurpose" name="loanPurpose" required>
+              <option value="">— Select purpose —</option>
+              <option value="Home">Home</option>
+              <option value="Car">Car</option>
+              <option value="Education">Education</option>
+              <option value="Personal">Personal</option>
+              <option value="Business">Business</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="existingDebt">Existing Monthly Debt ($) <span class="required">*</span></label>
+            <input type="number" id="existingDebt" name="existingDebt" placeholder="e.g. 1200" min="0" required />
+          </div>
+        </div>
+
+        <!-- Employment Information -->
+        <div class="section-title">Employment Information</div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="employmentStatus">Employment Status <span class="required">*</span></label>
+            <select id="employmentStatus" name="employmentStatus" required>
+              <option value="">— Select status —</option>
+              <option value="Employed">Employed</option>
+              <option value="Self-Employed">Self-Employed</option>
+              <option value="Part-Time">Part-Time</option>
+              <option value="Unemployed">Unemployed</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="yearsEmployed">Years at Current Employer <span class="required">*</span></label>
+            <input type="number" id="yearsEmployed" name="yearsEmployed" placeholder="e.g. 5" min="0" required />
+          </div>
+        </div>
+
+        <!-- Credit Information -->
+        <div class="section-title">Credit Information</div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="creditScore">Self-Reported Credit Score <span class="required">*</span>
+              <span class="hint">(300–850, as reported by your credit bureau)</span>
+            </label>
+            <input type="number" id="creditScore" name="creditScore" placeholder="e.g. 720" min="300" max="850" required />
+          </div>
+        </div>
+
+        <!-- Disclaimer -->
+        <div class="disclaimer">
+          By submitting this application, you authorize First National Bank to obtain a credit report and verify the information provided. This is a simulated portal for demonstration purposes only. No real credit check or data transmission occurs.
+        </div>
+
+        <button type="submit" class="btn-submit" id="submitBtn">
+          Submit Application →
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Confirmation card (hidden until submit) -->
+  <div class="card" id="confirmation">
+    <div class="confirm-header">
+      <div class="confirm-check">
+        <svg width="36" height="36" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+        </svg>
+      </div>
+      <h2>Application Received!</h2>
+      <p>Thank you for applying with First National Bank. We have received your application and will be in touch shortly.</p>
+      <div class="ref-number" id="refNumber">REF# FNB-000000</div>
+    </div>
+
+    <div class="confirm-body">
+      <h3>Submitted Application Details</h3>
+      <div class="data-grid" id="submittedData">
+        <!-- Populated by JS -->
+      </div>
+      <div class="status-badge-wrap">
+        <span class="status-badge pending">
+          ⏳ &nbsp;Under Review — Decision within 2–3 business days
+        </span>
+      </div>
+    </div>
+
+    <div class="confirm-footer">
+      A confirmation email has been sent to the address you provided. &nbsp;|&nbsp; Reference number saved for your records.
+    </div>
+  </div>
+
+</main>
+
+<!-- ── Footer ─────────────────────────────────────────────────────── -->
+<footer>
+  &copy; 2024 First National Bank. Member FDIC. Equal Housing Lender.
+  &nbsp;|&nbsp; Privacy Policy &nbsp;|&nbsp; Terms of Service &nbsp;|&nbsp; NMLS #000000
+</footer>
+
+<script>
+  document.getElementById('loanForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    // Collect values
+    const fullName        = document.getElementById('fullName').value.trim();
+    const email           = document.getElementById('email').value.trim();
+    const annualIncome    = document.getElementById('annualIncome').value;
+    const loanAmount      = document.getElementById('loanAmount').value;
+    const loanPurpose     = document.getElementById('loanPurpose').value;
+    const employmentStatus= document.getElementById('employmentStatus').value;
+    const yearsEmployed   = document.getElementById('yearsEmployed').value;
+    const existingDebt    = document.getElementById('existingDebt').value;
+    const creditScore     = document.getElementById('creditScore').value;
+
+    if (!fullName || !email || !annualIncome || !loanAmount || !loanPurpose || !employmentStatus || !yearsEmployed || !existingDebt || !creditScore) {
+      alert('Please fill in all required fields before submitting.');
+      return;
+    }
+
+    // Generate reference number
+    const ref = 'FNB-' + String(Date.now()).slice(-6);
+    document.getElementById('refNumber').textContent = 'REF# ' + ref;
+
+    // Build data display
+    const fields = [
+      ['Full Name',           fullName],
+      ['Email Address',       email],
+      ['Annual Income',       '$' + Number(annualIncome).toLocaleString()],
+      ['Loan Amount',         '$' + Number(loanAmount).toLocaleString()],
+      ['Loan Purpose',        loanPurpose],
+      ['Employment Status',   employmentStatus],
+      ['Years Employed',      yearsEmployed + ' year(s)'],
+      ['Monthly Debt',        '$' + Number(existingDebt).toLocaleString()],
+      ['Credit Score',        creditScore],
+    ];
+
+    const grid = document.getElementById('submittedData');
+    grid.innerHTML = '';
+    fields.forEach(([label, value]) => {
+      const row = document.createElement('div');
+      row.className = 'data-row';
+      row.innerHTML = `<span class="data-label">${label}</span><span class="data-value">${value}</span>`;
+      grid.appendChild(row);
+    });
+
+    // Hide form, show confirmation
+    document.getElementById('app-form-card').style.display = 'none';
+    document.getElementById('confirmation').style.display  = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+
+</body>
+</html>

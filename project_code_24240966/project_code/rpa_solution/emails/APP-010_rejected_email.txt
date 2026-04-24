@@ -1,0 +1,36 @@
+================================================================================
+  FIRST NATIONAL BANK — LOAN APPLICATION DECISION
+================================================================================
+Date:         April 16, 2026
+Reference:    APP-010
+To:           Kevin O'Brien
+Email:        kevin.obrien@email.com
+--------------------------------------------------------------------------------
+
+Dear Kevin O'Brien,
+
+Thank you for your interest in a loan from First National Bank. After careful
+review of your application (Ref: APP-010), we regret to inform
+you that we are unable to approve your request at this time.
+
+REASON(S) FOR DECISION
+-----------------------
+  • Bureau credit score 629 below minimum required score 650
+
+WHAT YOU CAN DO
+---------------
+  • Address the factors listed above and reapply after 90 days.
+  • Contact a financial advisor for guidance on improving your credit profile.
+  • Consider applying for a smaller loan amount if income/DTI was the concern.
+  • Call 1-800-FNB-LOAN to speak with a lending specialist.
+
+Under the Equal Credit Opportunity Act, you have the right to request the
+specific reasons for this decision within 60 days of receiving this notice.
+
+Sincerely,
+Automated Underwriting Division
+First National Bank
+
+================================================================================
+  This is an automated notification. Please do not reply to this message.
+================================================================================

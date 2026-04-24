@@ -1,0 +1,131 @@
+16:11:54  ====================================================================
+16:11:54    RPA WEB UI AUTOMATION BOT  —  First National Bank Portal
+16:11:54  ====================================================================
+16:11:54    Form:       E:\Academic Materials\MSC in AI\2nd Semester\IAPA\Project\Submitted files\project_code_v3\project_code\rpa_solution\loan_form.html
+16:11:54    Input CSV:  E:\Academic Materials\MSC in AI\2nd Semester\IAPA\Project\Submitted files\project_code_v3\project_code\rpa_solution\sample_applications.csv
+16:11:54    Screenshots:E:\Academic Materials\MSC in AI\2nd Semester\IAPA\Project\Submitted files\project_code_v3\project_code\rpa_solution\screenshots
+16:11:54    Max apps:   3
+16:11:54    Typing delay: 50 ms / character
+16:11:54  ====================================================================
+16:11:54  Loaded 3 application(s) from sample_applications.csv
+16:11:54  Launching headless Chrome browser …
+16:11:56  Browser started  (Chrome 147.0.7727.101)
+16:11:56  ------------------------------------------------------------
+16:11:56    Processing application 1/3:  APP-001  (Sarah Mitchell)
+16:11:56  ------------------------------------------------------------
+16:11:56  [APP-001]  NAVIGATE  →  Loading loan_form.html
+16:11:57  [APP-001]  TYPE  →  Full Name  →  Sarah Mitchell
+16:11:58  [APP-001]  TYPE  →  Email  →  sarah.mitchell@email.com
+16:12:00  [APP-001]  TYPE  →  Annual Income  →  $95000
+16:12:01  [APP-001]  TYPE  →  Loan Amount  →  $25000
+16:12:01  [APP-001]  SELECT  →  Loan Purpose  →  Home (from 'Home Improvement')
+16:12:02  [APP-001]  TYPE  →  Existing Monthly Debt  →  $12000
+16:12:02  [APP-001]  SELECT  →  Employment Status  →  Employed
+16:12:03  [APP-001]  TYPE  →  Years Employed  →  8
+16:12:03  [APP-001]  TYPE  →  Credit Score  →  742
+16:12:03  [APP-001]  SCREENSHOT  →  Form filled  →  E:\Academic Materials\MSC in AI\2nd Semester\IAPA\Project\Submitted files\project_code_v3\project_code\rpa_solution\screenshots\app_001_filled.png
+16:12:03  [APP-001]  CLICK  →  Submit Application button
+16:12:05  [APP-001]  SCREENSHOT  →  Confirmation  →  E:\Academic Materials\MSC in AI\2nd Semester\IAPA\Project\Submitted files\project_code_v3\project_code\rpa_solution\screenshots\app_001_submitted.png
+16:12:05  [APP-001]  DONE  →  Completed in 8.41 s  (fill: 6.92 s)
+16:12:05  ------------------------------------------------------------
+16:12:05    Processing application 2/3:  APP-002  (James Thornton)
+16:12:05  ------------------------------------------------------------
+16:12:05  [APP-002]  NAVIGATE  →  Loading loan_form.html
+16:12:05  [APP-002]  TYPE  →  Full Name  →  James Thornton
+16:12:06  [APP-002]  TYPE  →  Email  →  james.thornton@email.com
+16:12:08  [APP-002]  TYPE  →  Annual Income  →  $42000
+16:12:09  [APP-002]  TYPE  →  Loan Amount  →  $30000
+16:12:10  [APP-002]  SELECT  →  Loan Purpose  →  Personal (from 'Debt Consolidation')
+16:12:10  [APP-002]  TYPE  →  Existing Monthly Debt  →  $18000
+16:12:10  [APP-002]  SELECT  →  Employment Status  →  Employed
+16:12:11  [APP-002]  TYPE  →  Years Employed  →  2
+16:12:11  [APP-002]  TYPE  →  Credit Score  →  598
+16:12:11  [APP-002]  SCREENSHOT  →  Form filled  →  E:\Academic Materials\MSC in AI\2nd Semester\IAPA\Project\Submitted files\project_code_v3\project_code\rpa_solution\screenshots\app_002_filled.png
+16:12:11  [APP-002]  CLICK  →  Submit Application button
+16:12:12  [APP-002]  SCREENSHOT  →  Confirmation  →  E:\Academic Materials\MSC in AI\2nd Semester\IAPA\Project\Submitted files\project_code_v3\project_code\rpa_solution\screenshots\app_002_submitted.png
+16:12:12  [APP-002]  DONE  →  Completed in 7.44 s  (fill: 6.5 s)
+16:12:12  ------------------------------------------------------------
+16:12:12    Processing application 3/3:  APP-003  (Maria Gonzalez)
+16:12:12  ------------------------------------------------------------
+16:12:12  [APP-003]  NAVIGATE  →  Loading loan_form.html
+16:12:12  [APP-003]  TYPE  →  Full Name  →  Maria Gonzalez
+16:12:14  [APP-003]  TYPE  →  Email  →  maria.gonzalez@email.com
+16:12:16  [APP-003]  TYPE  →  Annual Income  →  $120000
+16:12:16  [APP-003]  TYPE  →  Loan Amount  →  $50000
+16:12:17  [APP-003]  SELECT  →  Loan Purpose  →  Business (from 'Business Expansion')
+16:12:17  [APP-003]  TYPE  →  Existing Monthly Debt  →  $15000
+16:12:18  [APP-003]  SELECT  →  Employment Status  →  Self-Employed
+16:12:18  [APP-003]  TYPE  →  Years Employed  →  5
+16:12:18  [APP-003]  TYPE  →  Credit Score  →  785
+16:12:18  [APP-003]  SCREENSHOT  →  Form filled  →  E:\Academic Materials\MSC in AI\2nd Semester\IAPA\Project\Submitted files\project_code_v3\project_code\rpa_solution\screenshots\app_003_filled.png
+16:12:18  [APP-003]  CLICK  →  Submit Application button
+16:12:19  [APP-003]  SCREENSHOT  →  Confirmation  →  E:\Academic Materials\MSC in AI\2nd Semester\IAPA\Project\Submitted files\project_code_v3\project_code\rpa_solution\screenshots\app_003_submitted.png
+16:12:19  [APP-003]  DONE  →  Completed in 7.11 s  (fill: 6.23 s)
+16:12:22  Browser closed.
+16:12:22  ====================================================================
+16:12:22    RPA WEB BOT — EXECUTION SUMMARY
+16:12:22  ====================================================================
+16:12:22    Applications processed : 3
+16:12:22    Total screenshots saved: 6
+16:12:22    Total elapsed time     : 27.77 seconds
+16:12:22    Screenshot directory   : E:\Academic Materials\MSC in AI\2nd Semester\IAPA\Project\Submitted files\project_code_v3\project_code\rpa_solution\screenshots
+16:12:22    Per-Application Timing:
+16:12:22    --------------------------------------------------
+16:12:22    APP-001  |  fill:  6.92s  |  total:  8.41s
+16:12:22    APP-002  |  fill:  6.50s  |  total:  7.44s
+16:12:22    APP-003  |  fill:  6.23s  |  total:  7.11s
+16:12:22    Screenshots saved:
+16:12:22    --------------------------------------------------
+16:12:22    app_001_filled.png
+16:12:22    app_001_submitted.png
+16:12:22    app_002_filled.png
+16:12:22    app_002_submitted.png
+16:12:22    app_003_filled.png
+16:12:22    app_003_submitted.png
+16:12:22    Full action log:
+16:12:22    --------------------------------------------------
+16:12:22    16:11:56.704  [APP-001]  NAVIGATE  →  Loading loan_form.html
+16:12:22    16:11:57.196  [APP-001]  TYPE  →  Full Name  →  Sarah Mitchell
+16:12:22    16:11:58.531  [APP-001]  TYPE  →  Email  →  sarah.mitchell@email.com
+16:12:22    16:12:00.970  [APP-001]  TYPE  →  Annual Income  →  $95000
+16:12:22    16:12:01.490  [APP-001]  TYPE  →  Loan Amount  →  $25000
+16:12:22    16:12:01.997  [APP-001]  SELECT  →  Loan Purpose  →  Home (from 'Home Improvement')
+16:12:22    16:12:02.398  [APP-001]  TYPE  →  Existing Monthly Debt  →  $12000
+16:12:22    16:12:02.904  [APP-001]  SELECT  →  Employment Status  →  Employed
+16:12:22    16:12:03.149  [APP-001]  TYPE  →  Years Employed  →  8
+16:12:22    16:12:03.297  [APP-001]  TYPE  →  Credit Score  →  742
+16:12:22    16:12:03.906  [APP-001]  SCREENSHOT  →  Form filled  →  E:\Academic Materials\MSC in AI\2nd Semester\IAPA\Project\Submitted files\project_code_v3\project_code\rpa_solution\screenshots\app_001_filled.png
+16:12:22    16:12:03.907  [APP-001]  CLICK  →  Submit Application button
+16:12:22    16:12:05.113  [APP-001]  SCREENSHOT  →  Confirmation  →  E:\Academic Materials\MSC in AI\2nd Semester\IAPA\Project\Submitted files\project_code_v3\project_code\rpa_solution\screenshots\app_001_submitted.png
+16:12:22    16:12:05.113  [APP-001]  DONE  →  Completed in 8.41 s  (fill: 6.92 s)
+16:12:22    16:12:05.114  [APP-002]  NAVIGATE  →  Loading loan_form.html
+16:12:22    16:12:05.466  [APP-002]  TYPE  →  Full Name  →  James Thornton
+16:12:22    16:12:06.652  [APP-002]  TYPE  →  Email  →  james.thornton@email.com
+16:12:22    16:12:08.946  [APP-002]  TYPE  →  Annual Income  →  $42000
+16:12:22    16:12:09.521  [APP-002]  TYPE  →  Loan Amount  →  $30000
+16:12:22    16:12:10.051  [APP-002]  SELECT  →  Loan Purpose  →  Personal (from 'Debt Consolidation')
+16:12:22    16:12:10.314  [APP-002]  TYPE  →  Existing Monthly Debt  →  $18000
+16:12:22    16:12:10.839  [APP-002]  SELECT  →  Employment Status  →  Employed
+16:12:22    16:12:11.067  [APP-002]  TYPE  →  Years Employed  →  2
+16:12:22    16:12:11.220  [APP-002]  TYPE  →  Credit Score  →  598
+16:12:22    16:12:11.698  [APP-002]  SCREENSHOT  →  Form filled  →  E:\Academic Materials\MSC in AI\2nd Semester\IAPA\Project\Submitted files\project_code_v3\project_code\rpa_solution\screenshots\app_002_filled.png
+16:12:22    16:12:11.699  [APP-002]  CLICK  →  Submit Application button
+16:12:22    16:12:12.552  [APP-002]  SCREENSHOT  →  Confirmation  →  E:\Academic Materials\MSC in AI\2nd Semester\IAPA\Project\Submitted files\project_code_v3\project_code\rpa_solution\screenshots\app_002_submitted.png
+16:12:22    16:12:12.553  [APP-002]  DONE  →  Completed in 7.44 s  (fill: 6.5 s)
+16:12:22    16:12:12.553  [APP-003]  NAVIGATE  →  Loading loan_form.html
+16:12:22    16:12:12.906  [APP-003]  TYPE  →  Full Name  →  Maria Gonzalez
+16:12:22    16:12:14.044  [APP-003]  TYPE  →  Email  →  maria.gonzalez@email.com
+16:12:22    16:12:16.286  [APP-003]  TYPE  →  Annual Income  →  $120000
+16:12:22    16:12:16.942  [APP-003]  TYPE  →  Loan Amount  →  $50000
+16:12:22    16:12:17.428  [APP-003]  SELECT  →  Loan Purpose  →  Business (from 'Business Expansion')
+16:12:22    16:12:17.640  [APP-003]  TYPE  →  Existing Monthly Debt  →  $15000
+16:12:22    16:12:18.121  [APP-003]  SELECT  →  Employment Status  →  Self-Employed
+16:12:22    16:12:18.345  [APP-003]  TYPE  →  Years Employed  →  5
+16:12:22    16:12:18.471  [APP-003]  TYPE  →  Credit Score  →  785
+16:12:22    16:12:18.868  [APP-003]  SCREENSHOT  →  Form filled  →  E:\Academic Materials\MSC in AI\2nd Semester\IAPA\Project\Submitted files\project_code_v3\project_code\rpa_solution\screenshots\app_003_filled.png
+16:12:22    16:12:18.869  [APP-003]  CLICK  →  Submit Application button
+16:12:22    16:12:19.664  [APP-003]  SCREENSHOT  →  Confirmation  →  E:\Academic Materials\MSC in AI\2nd Semester\IAPA\Project\Submitted files\project_code_v3\project_code\rpa_solution\screenshots\app_003_submitted.png
+16:12:22    16:12:19.665  [APP-003]  DONE  →  Completed in 7.11 s  (fill: 6.23 s)
+16:12:22  ====================================================================
+16:12:22    RPA UI Automation complete.
+16:12:22  ====================================================================

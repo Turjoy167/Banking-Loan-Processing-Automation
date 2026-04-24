@@ -1,0 +1,181 @@
+  ============================================================
+  RPA LOAN PROCESSING BOT — RUN STARTED
+  Input file : /home/user/workspace/rpa_solution/sample_applications.csv
+  Start time : 2026-04-15T02:38:20.826096
+  ============================================================
+  [INGEST] Reading applications from: sample_applications.csv
+  [INGEST] Loaded 10 application(s) successfully.
+  [OUTPUT] Processed results written to: processed_applications.csv
+  [DISBURSE] 6 record(s) written to: disbursement_records.csv
+  RPA RUN COMPLETE — elapsed 1.01s
+  Summary: {"total_applications": 10, "approved": 6, "rejected": 4, "errors": 0, "approval_rate_pct": 60.0, "total_loan_value_approved": 227000.0}
+
+========================================================================
+=           FIRST NATIONAL BANK — RPA LOAN PROCESSING SYSTEM           =
+========================================================================
+  Version  : 1.0.0
+  Module   : rpa_loan_bot
+  Started  : 2026-04-15 02:38:20
+========================================================================
+
+  [ENV] Checking environment...
+  [ENV] Input file   : sample_applications.csv  ✓
+  [ENV] Output dirs  : emails/, logs/  ✓
+  [ENV] Dependencies : pandas ✓
+
+  [RUN] Launching RPA bot pipeline...
+
+
+========================================================================
+  RPA LOAN PROCESSING BOT  |  Processing 10 application(s)
+========================================================================
+
+  ┌─ [1/10] APP-001 — Sarah Mitchell
+  │  [VALIDATION]  Passed all field checks
+  │  [CREDIT API]  Bureau score: 735 (ref: CBR-ADBFA35C50D794F0)
+  │  [RULES]       Decision: ✓ APPROVED
+  │               → Credit score 735 meets minimum requirement
+  │               → DTI ratio 2.47% within acceptable range
+  │               → Employment status 'Employed' verified
+  │               → Income $95,000 meets threshold
+  │               → Assigned interest rate 6.99% (Good tier)
+  │  [DISBURSE]    Monthly payment: $494.91 @ 6.99% APR
+  │  [EMAIL]       Notification saved: APP-001_approved_email.txt
+  └─ Complete
+
+  ┌─ [2/10] APP-002 — James Thornton
+  │  [VALIDATION]  Passed all field checks
+  │  [CREDIT API]  Bureau score: 599 (ref: CBR-DC59B9C0243F8169)
+  │  [RULES]       Decision: ✗ REJECTED
+  │               → Bureau credit score 599 below minimum required score 650
+  │  [EMAIL]       Notification saved: APP-002_rejected_email.txt
+  └─ Complete
+
+  ┌─ [3/10] APP-003 — Maria Gonzalez
+  │  [VALIDATION]  Passed all field checks
+  │  [CREDIT API]  Bureau score: 793 (ref: CBR-C2E4EEB8E421EF94)
+  │  [RULES]       Decision: ✓ APPROVED
+  │               → Credit score 793 meets minimum requirement
+  │               → DTI ratio 3.54% within acceptable range
+  │               → Employment status 'Self-Employed' verified
+  │               → Income $120,000 meets threshold
+  │               → Assigned interest rate 4.99% (Excellent tier)
+  │  [DISBURSE]    Monthly payment: $943.33 @ 4.99% APR
+  │  [EMAIL]       Notification saved: APP-003_approved_email.txt
+  └─ Complete
+
+  ┌─ [4/10] APP-004 — Derek Lawson
+  │  [VALIDATION]  Passed all field checks
+  │  [CREDIT API]  Bureau score: 617 (ref: CBR-93F464E9E278CECD)
+  │  [RULES]       Decision: ✗ REJECTED
+  │               → Employment status 'Unemployed' does not meet requirement (must be one of ['Employed', 'Self-Employed'])
+  │               → Bureau credit score 617 below minimum required score 650
+  │  [EMAIL]       Notification saved: APP-004_rejected_email.txt
+  └─ Complete
+
+  ┌─ [5/10] APP-005 — Patricia Chen
+  │  [VALIDATION]  Passed all field checks
+  │  [CREDIT API]  Bureau score: 691 (ref: CBR-4608DB8808CA2165)
+  │  [RULES]       Decision: ✓ APPROVED
+  │               → Credit score 691 meets minimum requirement
+  │               → DTI ratio 1.73% within acceptable range
+  │               → Employment status 'Employed' verified
+  │               → Income $75,000 meets threshold
+  │               → Assigned interest rate 8.99% (Fair tier)
+  │  [DISBURSE]    Monthly payment: $311.30 @ 8.99% APR
+  │  [EMAIL]       Notification saved: APP-005_approved_email.txt
+  └─ Complete
+
+  ┌─ [6/10] APP-006 — Robert Okafor
+  │  [VALIDATION]  Passed all field checks
+  │  [CREDIT API]  Bureau score: 652 (ref: CBR-42AD0C6DC60A9DB6)
+  │  [RULES]       Decision: ✓ APPROVED
+  │               → Credit score 652 meets minimum requirement
+  │               → DTI ratio 7.73% within acceptable range
+  │               → Employment status 'Employed' verified
+  │               → Income $55,000 meets threshold
+  │               → Assigned interest rate 8.99% (Fair tier)
+  │  [DISBURSE]    Monthly payment: $933.91 @ 8.99% APR
+  │  [EMAIL]       Notification saved: APP-006_approved_email.txt
+  └─ Complete
+
+  ┌─ [7/10] APP-007 — Linda Patel
+  │  [VALIDATION]  Passed all field checks
+  │  [CREDIT API]  Bureau score: 544 (ref: CBR-36535D9FF46D5287)
+  │  [RULES]       Decision: ✗ REJECTED
+  │               → Employment status 'Part-Time' does not meet requirement (must be one of ['Employed', 'Self-Employed'])
+  │               → Annual income $28,000 below minimum threshold $30,000
+  │               → Bureau credit score 544 below minimum required score 650
+  │  [EMAIL]       Notification saved: APP-007_rejected_email.txt
+  └─ Complete
+
+  ┌─ [8/10] APP-008 — Marcus Williams
+  │  [VALIDATION]  Passed all field checks
+  │  [CREDIT API]  Bureau score: 730 (ref: CBR-72411FF611437237)
+  │  [RULES]       Decision: ✓ APPROVED
+  │               → Credit score 730 meets minimum requirement
+  │               → DTI ratio 6.45% within acceptable range
+  │               → Employment status 'Employed' verified
+  │               → Income $110,000 meets threshold
+  │               → Assigned interest rate 6.99% (Good tier)
+  │  [DISBURSE]    Monthly payment: $1,583.72 @ 6.99% APR
+  │  [EMAIL]       Notification saved: APP-008_approved_email.txt
+  └─ Complete
+
+  ┌─ [9/10] APP-009 — Susan Nakamura
+  │  [VALIDATION]  Passed all field checks
+  │  [CREDIT API]  Bureau score: 718 (ref: CBR-DA77B8C61C046C6F)
+  │  [RULES]       Decision: ✓ APPROVED
+  │               → Credit score 718 meets minimum requirement
+  │               → DTI ratio 2.08% within acceptable range
+  │               → Employment status 'Employed' verified
+  │               → Income $62,000 meets threshold
+  │               → Assigned interest rate 6.99% (Good tier)
+  │  [DISBURSE]    Monthly payment: $237.56 @ 6.99% APR
+  │  [EMAIL]       Notification saved: APP-009_approved_email.txt
+  └─ Complete
+
+  ┌─ [10/10] APP-010 — Kevin O'Brien
+  │  [VALIDATION]  Passed all field checks
+  │  [CREDIT API]  Bureau score: 629 (ref: CBR-158435773AE0B8ED)
+  │  [RULES]       Decision: ✗ REJECTED
+  │               → Bureau credit score 629 below minimum required score 650
+  │  [EMAIL]       Notification saved: APP-010_rejected_email.txt
+  └─ Complete
+
+
+========================================================================
+  RPA RUN SUMMARY
+========================================================================
+  Total Applications Processed : 10
+  Approved                     : 6
+  Rejected                     : 4
+  Errors / Invalid             : 0
+  Approval Rate                : 60.0%
+  Total Approved Loan Value    : $227,000.00
+========================================================================
+
+  Output Files:
+    • processed_applications.csv
+    • disbursement_records.csv
+    • logs/audit_trail.log
+    • emails/  (10 notification file(s))
+
+  Run completed at: 2026-04-15 02:38:21
+========================================================================
+
+
+========================================================================
+  PIPELINE STATUS : SUCCESS
+  Elapsed Time    : 1.01 seconds
+
+  KEY METRICS
+  ────────────────────────────────────────
+  Applications submitted   : 10
+  Approved                 : 6
+  Rejected                 : 4
+  Errors / Invalid data    : 0
+  Approval rate            : 60.0%
+  Total approved loan value: $227,000.00
+========================================================================
+

@@ -1,0 +1,11 @@
+application_id,applicant_name,email,annual_income,loan_amount,loan_purpose,employment_status,years_employed,existing_debt,credit_score
+APP-001,Sarah Mitchell,sarah.mitchell@email.com,95000,25000,Home Improvement,Employed,8,12000,742
+APP-002,James Thornton,james.thornton@email.com,42000,30000,Debt Consolidation,Employed,2,18000,598
+APP-003,Maria Gonzalez,maria.gonzalez@email.com,120000,50000,Business Expansion,Self-Employed,5,15000,785
+APP-004,Derek Lawson,derek.lawson@email.com,38000,20000,Personal,Unemployed,0,8000,610
+APP-005,Patricia Chen,patricia.chen@email.com,75000,15000,Medical Expenses,Employed,12,5000,690
+APP-006,Robert Okafor,robert.okafor@email.com,55000,45000,Education,Employed,3,22000,655
+APP-007,Linda Patel,linda.patel@email.com,28000,35000,Vacation,Part-Time,1,14000,540
+APP-008,Marcus Williams,marcus.williams@email.com,110000,80000,Home Purchase,Employed,10,30000,720
+APP-009,Susan Nakamura,susan.nakamura@email.com,62000,12000,Auto Purchase,Employed,6,9000,708
+APP-010,Kevin O'Brien,kevin.obrien@email.com,33000,18000,Debt Consolidation,Employed,1,16500,632

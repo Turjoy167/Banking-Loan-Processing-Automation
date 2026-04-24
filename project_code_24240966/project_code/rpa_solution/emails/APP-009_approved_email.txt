@@ -1,0 +1,45 @@
+================================================================================
+  FIRST NATIONAL BANK — LOAN APPROVAL NOTIFICATION
+================================================================================
+Date:         April 16, 2026
+Reference:    APP-009
+To:           Susan Nakamura
+Email:        susan.nakamura@email.com
+--------------------------------------------------------------------------------
+
+Dear Susan Nakamura,
+
+We are pleased to inform you that your loan application has been APPROVED.
+
+LOAN DETAILS
+------------
+  Loan Purpose      : Auto Purchase
+  Loan Amount       : $12,000.00
+  Annual Rate (APR) : 6.99%
+  Loan Term         : 60 months (5 years)
+  Monthly Payment   : $237.56
+  Total Repayable   : $14,253.47
+
+APPROVAL BASIS
+--------------
+  • Credit score 718 meets minimum requirement
+  • DTI ratio 2.08% within acceptable range
+  • Employment status 'Employed' verified
+  • Income $62,000 meets threshold
+  • Assigned interest rate 6.99% (Good tier)
+
+NEXT STEPS
+----------
+  1. A loan agreement will be sent to your registered email within 2 business days.
+  2. Please review, sign, and return the agreement.
+  3. Funds will be disbursed within 3–5 business days of agreement receipt.
+
+If you have any questions, please contact your loan officer or call 1-800-FNB-LOAN.
+
+Sincerely,
+Automated Underwriting Division
+First National Bank
+
+================================================================================
+  This is an automated notification. Please do not reply to this message.
+================================================================================

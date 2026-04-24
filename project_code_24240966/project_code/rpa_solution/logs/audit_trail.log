@@ -1,0 +1,99 @@
+2026-04-16 16:11:23 | INFO     | ============================================================
+2026-04-16 16:11:23 | INFO     | RPA LOAN PROCESSING BOT — RUN STARTED
+2026-04-16 16:11:23 | INFO     | Input file : E:\Academic Materials\MSC in AI\2nd Semester\IAPA\Project\Submitted files\project_code_v3\project_code\rpa_solution\sample_applications.csv
+2026-04-16 16:11:23 | INFO     | Start time : 2026-04-16T16:11:23.725119
+2026-04-16 16:11:23 | INFO     | ============================================================
+2026-04-16 16:11:23 | INFO     | [INGEST] Reading applications from: sample_applications.csv
+2026-04-16 16:11:23 | DEBUG    | [INGEST] Raw DataFrame shape: (10, 10)
+2026-04-16 16:11:23 | INFO     | [INGEST] Loaded 10 application(s) successfully.
+2026-04-16 16:11:23 | DEBUG    | [AUDIT] AppID=APP-001 | Event=PROCESSING_START
+2026-04-16 16:11:23 | DEBUG    | [AUDIT] AppID=APP-001 | Event=VALIDATION_PASS
+2026-04-16 16:11:23 | DEBUG    | [CREDIT API] Calling bureau for APP-001 (Sarah Mitchell)
+2026-04-16 16:11:23 | DEBUG    | [CREDIT API] Response for APP-001: {'status': 'SUCCESS', 'bureau_score': 735, 'bureau_reference': 'CBR-ADBFA35C50D794F0', 'timestamp': '2026-04-16T15:11:23.945076Z', 'agency': 'Simulated Credit Bureau'}
+2026-04-16 16:11:23 | DEBUG    | [AUDIT] AppID=APP-001 | Event=CREDIT_BUREAU_CALL | Detail=score=735 ref=CBR-ADBFA35C50D794F0
+2026-04-16 16:11:23 | DEBUG    | [AUDIT] AppID=APP-001 | Event=DECISION_APPROVED | Detail=reasons=['Credit score 735 meets minimum requirement', 'DTI ratio 2.47% within acceptable range', "Employment status 'Employed' verified", 'Income $95,000 meets threshold', 'Assigned interest rate 6.99% (Good tier)']
+2026-04-16 16:11:23 | DEBUG    | [AUDIT] AppID=APP-001 | Event=DISBURSEMENT_RECORD_CREATED | Detail=monthly_payment=494.91
+2026-04-16 16:11:23 | DEBUG    | [EMAIL] Saved notification to: APP-001_approved_email.txt
+2026-04-16 16:11:23 | DEBUG    | [AUDIT] AppID=APP-001 | Event=EMAIL_GENERATED | Detail=APP-001_approved_email.txt
+2026-04-16 16:11:23 | DEBUG    | [AUDIT] AppID=APP-002 | Event=PROCESSING_START
+2026-04-16 16:11:23 | DEBUG    | [AUDIT] AppID=APP-002 | Event=VALIDATION_PASS
+2026-04-16 16:11:23 | DEBUG    | [CREDIT API] Calling bureau for APP-002 (James Thornton)
+2026-04-16 16:11:24 | DEBUG    | [CREDIT API] Response for APP-002: {'status': 'SUCCESS', 'bureau_score': 599, 'bureau_reference': 'CBR-DC59B9C0243F8169', 'timestamp': '2026-04-16T15:11:24.014902Z', 'agency': 'Simulated Credit Bureau'}
+2026-04-16 16:11:24 | DEBUG    | [AUDIT] AppID=APP-002 | Event=CREDIT_BUREAU_CALL | Detail=score=599 ref=CBR-DC59B9C0243F8169
+2026-04-16 16:11:24 | DEBUG    | [AUDIT] AppID=APP-002 | Event=DECISION_REJECTED | Detail=reasons=['Bureau credit score 599 below minimum required score 650']
+2026-04-16 16:11:24 | DEBUG    | [EMAIL] Saved notification to: APP-002_rejected_email.txt
+2026-04-16 16:11:24 | DEBUG    | [AUDIT] AppID=APP-002 | Event=EMAIL_GENERATED | Detail=APP-002_rejected_email.txt
+2026-04-16 16:11:24 | DEBUG    | [AUDIT] AppID=APP-003 | Event=PROCESSING_START
+2026-04-16 16:11:24 | DEBUG    | [AUDIT] AppID=APP-003 | Event=VALIDATION_PASS
+2026-04-16 16:11:24 | DEBUG    | [CREDIT API] Calling bureau for APP-003 (Maria Gonzalez)
+2026-04-16 16:11:24 | DEBUG    | [CREDIT API] Response for APP-003: {'status': 'SUCCESS', 'bureau_score': 793, 'bureau_reference': 'CBR-C2E4EEB8E421EF94', 'timestamp': '2026-04-16T15:11:24.151655Z', 'agency': 'Simulated Credit Bureau'}
+2026-04-16 16:11:24 | DEBUG    | [AUDIT] AppID=APP-003 | Event=CREDIT_BUREAU_CALL | Detail=score=793 ref=CBR-C2E4EEB8E421EF94
+2026-04-16 16:11:24 | DEBUG    | [AUDIT] AppID=APP-003 | Event=DECISION_APPROVED | Detail=reasons=['Credit score 793 meets minimum requirement', 'DTI ratio 3.54% within acceptable range', "Employment status 'Self-Employed' verified", 'Income $120,000 meets threshold', 'Assigned interest rate 4.99% (Excellent tier)']
+2026-04-16 16:11:24 | DEBUG    | [AUDIT] AppID=APP-003 | Event=DISBURSEMENT_RECORD_CREATED | Detail=monthly_payment=943.33
+2026-04-16 16:11:24 | DEBUG    | [EMAIL] Saved notification to: APP-003_approved_email.txt
+2026-04-16 16:11:24 | DEBUG    | [AUDIT] AppID=APP-003 | Event=EMAIL_GENERATED | Detail=APP-003_approved_email.txt
+2026-04-16 16:11:24 | DEBUG    | [AUDIT] AppID=APP-004 | Event=PROCESSING_START
+2026-04-16 16:11:24 | DEBUG    | [AUDIT] AppID=APP-004 | Event=VALIDATION_PASS
+2026-04-16 16:11:24 | DEBUG    | [CREDIT API] Calling bureau for APP-004 (Derek Lawson)
+2026-04-16 16:11:24 | DEBUG    | [CREDIT API] Response for APP-004: {'status': 'SUCCESS', 'bureau_score': 617, 'bureau_reference': 'CBR-93F464E9E278CECD', 'timestamp': '2026-04-16T15:11:24.230679Z', 'agency': 'Simulated Credit Bureau'}
+2026-04-16 16:11:24 | DEBUG    | [AUDIT] AppID=APP-004 | Event=CREDIT_BUREAU_CALL | Detail=score=617 ref=CBR-93F464E9E278CECD
+2026-04-16 16:11:24 | DEBUG    | [AUDIT] AppID=APP-004 | Event=DECISION_REJECTED | Detail=reasons=["Employment status 'Unemployed' does not meet requirement (must be one of ['Employed', 'Self-Employed'])", 'Bureau credit score 617 below minimum required score 650']
+2026-04-16 16:11:24 | DEBUG    | [EMAIL] Saved notification to: APP-004_rejected_email.txt
+2026-04-16 16:11:24 | DEBUG    | [AUDIT] AppID=APP-004 | Event=EMAIL_GENERATED | Detail=APP-004_rejected_email.txt
+2026-04-16 16:11:24 | DEBUG    | [AUDIT] AppID=APP-005 | Event=PROCESSING_START
+2026-04-16 16:11:24 | DEBUG    | [AUDIT] AppID=APP-005 | Event=VALIDATION_PASS
+2026-04-16 16:11:24 | DEBUG    | [CREDIT API] Calling bureau for APP-005 (Patricia Chen)
+2026-04-16 16:11:24 | DEBUG    | [CREDIT API] Response for APP-005: {'status': 'SUCCESS', 'bureau_score': 691, 'bureau_reference': 'CBR-4608DB8808CA2165', 'timestamp': '2026-04-16T15:11:24.316148Z', 'agency': 'Simulated Credit Bureau'}
+2026-04-16 16:11:24 | DEBUG    | [AUDIT] AppID=APP-005 | Event=CREDIT_BUREAU_CALL | Detail=score=691 ref=CBR-4608DB8808CA2165
+2026-04-16 16:11:24 | DEBUG    | [AUDIT] AppID=APP-005 | Event=DECISION_APPROVED | Detail=reasons=['Credit score 691 meets minimum requirement', 'DTI ratio 1.73% within acceptable range', "Employment status 'Employed' verified", 'Income $75,000 meets threshold', 'Assigned interest rate 8.99% (Fair tier)']
+2026-04-16 16:11:24 | DEBUG    | [AUDIT] AppID=APP-005 | Event=DISBURSEMENT_RECORD_CREATED | Detail=monthly_payment=311.3
+2026-04-16 16:11:24 | DEBUG    | [EMAIL] Saved notification to: APP-005_approved_email.txt
+2026-04-16 16:11:24 | DEBUG    | [AUDIT] AppID=APP-005 | Event=EMAIL_GENERATED | Detail=APP-005_approved_email.txt
+2026-04-16 16:11:24 | DEBUG    | [AUDIT] AppID=APP-006 | Event=PROCESSING_START
+2026-04-16 16:11:24 | DEBUG    | [AUDIT] AppID=APP-006 | Event=VALIDATION_PASS
+2026-04-16 16:11:24 | DEBUG    | [CREDIT API] Calling bureau for APP-006 (Robert Okafor)
+2026-04-16 16:11:24 | DEBUG    | [CREDIT API] Response for APP-006: {'status': 'SUCCESS', 'bureau_score': 652, 'bureau_reference': 'CBR-42AD0C6DC60A9DB6', 'timestamp': '2026-04-16T15:11:24.386292Z', 'agency': 'Simulated Credit Bureau'}
+2026-04-16 16:11:24 | DEBUG    | [AUDIT] AppID=APP-006 | Event=CREDIT_BUREAU_CALL | Detail=score=652 ref=CBR-42AD0C6DC60A9DB6
+2026-04-16 16:11:24 | DEBUG    | [AUDIT] AppID=APP-006 | Event=DECISION_APPROVED | Detail=reasons=['Credit score 652 meets minimum requirement', 'DTI ratio 7.73% within acceptable range', "Employment status 'Employed' verified", 'Income $55,000 meets threshold', 'Assigned interest rate 8.99% (Fair tier)']
+2026-04-16 16:11:24 | DEBUG    | [AUDIT] AppID=APP-006 | Event=DISBURSEMENT_RECORD_CREATED | Detail=monthly_payment=933.91
+2026-04-16 16:11:24 | DEBUG    | [EMAIL] Saved notification to: APP-006_approved_email.txt
+2026-04-16 16:11:24 | DEBUG    | [AUDIT] AppID=APP-006 | Event=EMAIL_GENERATED | Detail=APP-006_approved_email.txt
+2026-04-16 16:11:24 | DEBUG    | [AUDIT] AppID=APP-007 | Event=PROCESSING_START
+2026-04-16 16:11:24 | DEBUG    | [AUDIT] AppID=APP-007 | Event=VALIDATION_PASS
+2026-04-16 16:11:24 | DEBUG    | [CREDIT API] Calling bureau for APP-007 (Linda Patel)
+2026-04-16 16:11:24 | DEBUG    | [CREDIT API] Response for APP-007: {'status': 'SUCCESS', 'bureau_score': 544, 'bureau_reference': 'CBR-36535D9FF46D5287', 'timestamp': '2026-04-16T15:11:24.463084Z', 'agency': 'Simulated Credit Bureau'}
+2026-04-16 16:11:24 | DEBUG    | [AUDIT] AppID=APP-007 | Event=CREDIT_BUREAU_CALL | Detail=score=544 ref=CBR-36535D9FF46D5287
+2026-04-16 16:11:24 | DEBUG    | [AUDIT] AppID=APP-007 | Event=DECISION_REJECTED | Detail=reasons=["Employment status 'Part-Time' does not meet requirement (must be one of ['Employed', 'Self-Employed'])", 'Annual income $28,000 below minimum threshold $30,000', 'Bureau credit score 544 below minimum required score 650']
+2026-04-16 16:11:24 | DEBUG    | [EMAIL] Saved notification to: APP-007_rejected_email.txt
+2026-04-16 16:11:24 | DEBUG    | [AUDIT] AppID=APP-007 | Event=EMAIL_GENERATED | Detail=APP-007_rejected_email.txt
+2026-04-16 16:11:24 | DEBUG    | [AUDIT] AppID=APP-008 | Event=PROCESSING_START
+2026-04-16 16:11:24 | DEBUG    | [AUDIT] AppID=APP-008 | Event=VALIDATION_PASS
+2026-04-16 16:11:24 | DEBUG    | [CREDIT API] Calling bureau for APP-008 (Marcus Williams)
+2026-04-16 16:11:24 | DEBUG    | [CREDIT API] Response for APP-008: {'status': 'SUCCESS', 'bureau_score': 730, 'bureau_reference': 'CBR-72411FF611437237', 'timestamp': '2026-04-16T15:11:24.605970Z', 'agency': 'Simulated Credit Bureau'}
+2026-04-16 16:11:24 | DEBUG    | [AUDIT] AppID=APP-008 | Event=CREDIT_BUREAU_CALL | Detail=score=730 ref=CBR-72411FF611437237
+2026-04-16 16:11:24 | DEBUG    | [AUDIT] AppID=APP-008 | Event=DECISION_APPROVED | Detail=reasons=['Credit score 730 meets minimum requirement', 'DTI ratio 6.45% within acceptable range', "Employment status 'Employed' verified", 'Income $110,000 meets threshold', 'Assigned interest rate 6.99% (Good tier)']
+2026-04-16 16:11:24 | DEBUG    | [AUDIT] AppID=APP-008 | Event=DISBURSEMENT_RECORD_CREATED | Detail=monthly_payment=1583.72
+2026-04-16 16:11:24 | DEBUG    | [EMAIL] Saved notification to: APP-008_approved_email.txt
+2026-04-16 16:11:24 | DEBUG    | [AUDIT] AppID=APP-008 | Event=EMAIL_GENERATED | Detail=APP-008_approved_email.txt
+2026-04-16 16:11:24 | DEBUG    | [AUDIT] AppID=APP-009 | Event=PROCESSING_START
+2026-04-16 16:11:24 | DEBUG    | [AUDIT] AppID=APP-009 | Event=VALIDATION_PASS
+2026-04-16 16:11:24 | DEBUG    | [CREDIT API] Calling bureau for APP-009 (Susan Nakamura)
+2026-04-16 16:11:24 | DEBUG    | [CREDIT API] Response for APP-009: {'status': 'SUCCESS', 'bureau_score': 718, 'bureau_reference': 'CBR-DA77B8C61C046C6F', 'timestamp': '2026-04-16T15:11:24.702711Z', 'agency': 'Simulated Credit Bureau'}
+2026-04-16 16:11:24 | DEBUG    | [AUDIT] AppID=APP-009 | Event=CREDIT_BUREAU_CALL | Detail=score=718 ref=CBR-DA77B8C61C046C6F
+2026-04-16 16:11:24 | DEBUG    | [AUDIT] AppID=APP-009 | Event=DECISION_APPROVED | Detail=reasons=['Credit score 718 meets minimum requirement', 'DTI ratio 2.08% within acceptable range', "Employment status 'Employed' verified", 'Income $62,000 meets threshold', 'Assigned interest rate 6.99% (Good tier)']
+2026-04-16 16:11:24 | DEBUG    | [AUDIT] AppID=APP-009 | Event=DISBURSEMENT_RECORD_CREATED | Detail=monthly_payment=237.56
+2026-04-16 16:11:24 | DEBUG    | [EMAIL] Saved notification to: APP-009_approved_email.txt
+2026-04-16 16:11:24 | DEBUG    | [AUDIT] AppID=APP-009 | Event=EMAIL_GENERATED | Detail=APP-009_approved_email.txt
+2026-04-16 16:11:24 | DEBUG    | [AUDIT] AppID=APP-010 | Event=PROCESSING_START
+2026-04-16 16:11:24 | DEBUG    | [AUDIT] AppID=APP-010 | Event=VALIDATION_PASS
+2026-04-16 16:11:24 | DEBUG    | [CREDIT API] Calling bureau for APP-010 (Kevin O'Brien)
+2026-04-16 16:11:24 | DEBUG    | [CREDIT API] Response for APP-010: {'status': 'SUCCESS', 'bureau_score': 629, 'bureau_reference': 'CBR-158435773AE0B8ED', 'timestamp': '2026-04-16T15:11:24.836769Z', 'agency': 'Simulated Credit Bureau'}
+2026-04-16 16:11:24 | DEBUG    | [AUDIT] AppID=APP-010 | Event=CREDIT_BUREAU_CALL | Detail=score=629 ref=CBR-158435773AE0B8ED
+2026-04-16 16:11:24 | DEBUG    | [AUDIT] AppID=APP-010 | Event=DECISION_REJECTED | Detail=reasons=['Bureau credit score 629 below minimum required score 650']
+2026-04-16 16:11:24 | DEBUG    | [EMAIL] Saved notification to: APP-010_rejected_email.txt
+2026-04-16 16:11:24 | DEBUG    | [AUDIT] AppID=APP-010 | Event=EMAIL_GENERATED | Detail=APP-010_rejected_email.txt
+2026-04-16 16:11:24 | INFO     | [OUTPUT] Processed results written to: processed_applications.csv
+2026-04-16 16:11:24 | DEBUG    | [OUTPUT] Columns: ['application_id', 'applicant_name', 'email', 'loan_amount', 'loan_purpose', 'employment_status', 'annual_income', 'existing_debt', 'reported_credit_score', 'bureau_credit_score', 'bureau_reference', 'decision', 'interest_rate', 'decision_reasons', 'email_file', 'validation_errors', 'processed_at']
+2026-04-16 16:11:24 | INFO     | [DISBURSE] 6 record(s) written to: disbursement_records.csv
+2026-04-16 16:11:24 | INFO     | RPA RUN COMPLETE — elapsed 1.14s
+2026-04-16 16:11:24 | INFO     | Summary: {"total_applications": 10, "approved": 6, "rejected": 4, "errors": 0, "approval_rate_pct": 60.0, "total_loan_value_approved": 227000.0}
